@@ -37,7 +37,7 @@
             "name": "windows-base",
             "displayName": "Windows Build",
             "description": "Windows build using Unix Makefiles as generator",
-            "generator": "Visual Studio 16 2019",
+            "generator": "Visual Studio 17 2022",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
