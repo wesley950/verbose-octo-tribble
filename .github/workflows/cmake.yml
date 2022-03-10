@@ -1,0 +1,24 @@
+name: CMake
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          submodules: recursive
+      
+      - name: Restore artifacts, or setup vcpkg (do not install any package)
+        uses: lukka/run-vcpkg@v10.1
+
+      - name: Run CMake consuming CMakePreset.json and vcpkg.json by mean of vcpkg
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: 'windows-release-gh-actions'
+          buildPreset: 'windows-release-gh-actions' 
+
+
