@@ -1,0 +1,93 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "linux-base",
+            "displayName": "Linux Build",
+            "description": "Linux build using Unix Makefiles as generator",
+            "generator": "Unix Makefiles",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
+            }
+        },
+        {
+            "name": "linux-release",
+            "displayName": "Linux Release Build",
+            "inherits": [
+                "linux-base"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_TOOLCHAIN_FILE": "vcpkg/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "linux-debug",
+            "displayName": "Linux Debug Build",
+            "inherits": [
+                "linux-base"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "vcpkg/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "windows-base",
+            "displayName": "Windows Build",
+            "description": "Windows build using Unix Makefiles as generator",
+            "generator": "Visual Studio 16 2019",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
+            }
+        },
+        {
+            "name": "windows-release",
+            "displayName": "Windows Release Build",
+            "inherits": [
+                "windows-base"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_TOOLCHAIN_FILE": "vcpkg/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "windows-debug",
+            "displayName": "Windows Debug Build",
+            "inherits": [
+                "windows-base"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_TOOLCHAIN_FILE": "vcpkg/scripts/buildsystems/vcpkg.cmake"
+            }
+        },
+        {
+            "name": "windows-release-gh-actions",
+            "displayName": "Windows Release on GitHub Actions",
+            "inherits": [
+                "windows-base"
+            ],
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-release-gh-actions",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "windows-release-gh-actions"
+        },
+        {
+            "name": "linux-debug",
+            "description": "",
+            "displayName": "Linux Debug",
+            "configurePreset": "linux-debug"
+        }
+    ]
+}

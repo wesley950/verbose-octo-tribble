@@ -1,0 +1,19 @@
+{
+    "name": "cuddly-barnacle",
+    "version-string": "0.0.1",
+    "description": "Simple 2D game engine.",
+    "dependencies": [
+        "glm",
+        "entt",
+        "glfw3",
+        "glew",
+        {
+            "name": "imgui",
+            "features": [
+                "docking-experimental",
+                "glfw-binding",
+                "opengl3-binding"
+            ]
+        }
+    ]
+}
